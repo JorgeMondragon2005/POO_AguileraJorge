@@ -1,4 +1,5 @@
 # --- 1. IMPORTACIONES ---
+import os
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -7,7 +8,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # --- CONFIGURACIÓN DE LA BASE DE DATOS (MySQL/MariaDB en XAMPP) ---
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/plataforma_cursos_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///local.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Inicializa la extensión SQLAlchemy, vinculándola con nuestra aplicación Flask.
