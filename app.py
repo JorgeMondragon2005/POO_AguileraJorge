@@ -15,6 +15,7 @@ if uri and uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Inicializa la extensión SQLAlchemy, vinculándola con nuestra aplicación Flask.
 db = SQLAlchemy(app)
